@@ -13,33 +13,33 @@ class TodoController {
       res.status(500).json({ error: "Failed to fetch todos" });
     }
   };
-  getTodoById = (req, res) => {
+  getTodoById = async (req, res) => {
     try {
-      const todo = this.todoService.getTodoById(req.params.id);
+      const todo = await this.todoService.getTodoById(req.params.id);
       res.status(200).json(todo);
     } catch (error) {
       res.status(500).json({ error: "Failed to fetch todo" });
     }
   };
-  createTodo = (req, res) => {
+  createTodo = async (req, res) => {
     try {
-      const todo = this.todoService.createTodo(req.body);
+      const todo = await this.todoService.createTodo(req.body);
       res.status(200).json(todo);
     } catch (error) {
       res.status(500).json({ error: "Failed to create todo" });
     }
   };
-  updateTodo = (req, res) => {
+  updateTodo = async (req, res) => {
     try {
-      const todo = this.todoService.updateTodo(req.params.id, req.body);
+      const todo = await this.todoService.updateTodo(req.params.id, req.body);
       res.status(200).json(todo);
     } catch (error) {
       res.status(500).json({ error: "Failed to update todo" });
     }
   };
-  deleteTodo = (req, res) => {
+  deleteTodo = async (req, res) => {
     try {
-      const todo = this.todoService.deleteTodo(req.params.id);
+      const todo = await this.todoService.deleteTodo(req.params.id);
       res.status(200).json(todo);
     } catch (error) {
       res.status(500).json({ error: "Failed to delete todo" });
