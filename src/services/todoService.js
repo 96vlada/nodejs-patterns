@@ -1,6 +1,12 @@
+const TodoRepo = require("../repositories/todoRepo");
+
 class TodoService {
-  constructor(todoRepo) {
-    this.todoRepo = todoRepo;
+  constructor() {
+    if (TodoService.instance) {
+      return TodoService.instance;
+    }
+    this.todoRepo = TodoRepo;
+    TodoService.instance = this;
   }
 
   async getAllTodos() {
@@ -24,4 +30,4 @@ class TodoService {
   }
 }
 
-module.exports = TodoService;
+module.exports = new TodoService();

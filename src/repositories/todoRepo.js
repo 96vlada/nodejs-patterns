@@ -1,6 +1,12 @@
 const todoModel = require("../models/todoModel");
 
 class TodoRepo {
+  constructor() {
+    if (TodoRepo.instance) {
+      return TodoRepo.instance;
+    }
+    TodoRepo.instance = this;
+  }
   async getAllTodos() {
     const todos = await todoModel.find();
     return todos;
@@ -25,4 +31,4 @@ class TodoRepo {
   }
 }
 
-module.exports = TodoRepo;
+module.exports = new TodoRepo();
