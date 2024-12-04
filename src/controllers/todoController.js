@@ -1,8 +1,6 @@
-const TodoServiceFactory = require("../factories/todoServiceFactory");
-
 class TodoController {
-  constructor() {
-    this.todoService = TodoServiceFactory.create();
+  constructor(todoService) {
+    this.todoService = todoService;
   }
 
   getAllTodos = async (req, res) => {
@@ -47,4 +45,4 @@ class TodoController {
   };
 }
 
-module.exports = new TodoController();
+module.exports = TodoController;

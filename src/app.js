@@ -1,7 +1,10 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
+const container = require("./container");
+const registerServices = require("./registerServices");
 require("dotenv").config();
+
 mongoose
   .connect(process.env.MONGO_URI || "mongodb://localhost:27017/test", {
     useNewUrlParser: true,
@@ -13,6 +16,8 @@ mongoose
   .catch((error) => {
     console.error("Error connecting to MongoDB:", error);
   });
+
+registerServices(container);
 
 app.use(express.json());
 
